@@ -188,16 +188,6 @@ public class TaxiService extends TelegramLongPollingBot {
                 SendMessage sendMessage = new SendMessage();
                 sendMessage.setText(optional.get().getType() + "\n\n1\uFE0F⃣  Malumot:  " + optional.get().getMsg() + "\n2\uFE0F⃣ telegram manzili:  @" + optional.get().getUsername() + "\n3\uFE0F⃣  Yonalishi:  " + optional.get().getLocation() + "\n4\uFE0F⃣ yolovchi yoki pochta:  " + optional.get().getCount());
                 sendMessage.setChatId("-1002121307892");
-                InlineKeyboardMarkup markupInline1 = new InlineKeyboardMarkup();
-                List<List<InlineKeyboardButton>> rowsInline1 = new ArrayList<>();
-                List<InlineKeyboardButton> rowInline1 = new ArrayList<>();
-                InlineKeyboardButton button1 = new InlineKeyboardButton();
-                button1.setText("Zakazchi");
-                    button1.setUrl("https://telegram.me/" + update.getMessage().getChat().getUserName());
-                rowInline1.add(button1);
-                rowsInline1.add(rowInline1);
-                markupInline1.setKeyboard(rowsInline1);
-                sendMessage.setReplyMarkup(markupInline1);
                 execute(sendMessage);
 
                 sendMessage.setText("Xurmatli  " + optional.get().getFirstName() +
