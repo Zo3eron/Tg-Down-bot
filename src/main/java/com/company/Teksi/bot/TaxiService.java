@@ -691,12 +691,12 @@ public class TaxiService extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "@tolliq_skachatbot";
+        return "@Bekobod_Toshkent_taxi_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "6606131007:AAF4TBYJjyynr7W2M9OCtzJdDa6t4rY9Rho";
+        return "6342415204:AAGicl3TD8cX8kXXus3DcTiLc-zUpM2S0nM";
     }
 }
 
