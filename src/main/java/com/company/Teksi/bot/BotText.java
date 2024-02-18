@@ -1,13 +1,6 @@
 package com.company.Teksi.bot;
 
 public interface BotText {
-   // String TextUZ = "taksi chaqirish uchun ariza berish.\n" +
-     //       "\n" +
-       //     "Hozir sizga bir necha savollar beriladi, har biriga javob bering, oxirida agar hammasi to'g'ri bo'lsa, HA tugmasini bosing va arizangiz operatorga yuboriladi.";
-    //String TextRu = "Подача заявки на такси.\n" +
-         //   "\n" +
-           // "Теперь вам будет задано несколько вопросов, ответьте на каждый, в конце концов, если все верно, нажмите кнопку ДА и ваша заявка будет отправлена оператору.";
-
     String TextNumUz = "Qisqacha malumot bering. yoki telefon nomer yozib qoldiring";
     String TextNumRu = "Дайте краткую информацию или запишите номер телефона";
     String TAXITEXT_UZ="Hurmatli haydochi ! \n pasdagi tugamalarni birini bosing ⏬";
@@ -35,8 +28,8 @@ String VIPABOUT_RU="✅Вип группа - бу что означает и к�
         "✅Для получения дополнительной информации свяжитесь с нами\n" +
         "⬇️⬇️⬇️⬇️";
 
-String CLENT_LOK_UZ="Qaysi yonalish boyicha taksi kerakligini tanlang⬇️⬇️⬇️⬇️";
-String CLENT_LOK_RU="Выберите, в каком направлении такси⬇️⬇️⬇️⬇️";
+String CLENT_LOK_UZ="Qaysi yonalish boyicha taksi kerakligini tanlang⬇️⬇️⬇️⬇️  \n Yokida tolliq  yozib qoldiring";
+String CLENT_LOK_RU="Выберите, в каком направлении такси⬇️⬇️⬇️⬇️ \n Или напишите полностью";
 String ORDER_UZ="Nechta yolovchi bor yoki pochtami⬇️⬇️⬇️⬇️";
 String ORDER_RU="Сколько пассажиров есть или почтовые⬇️⬇️⬇️⬇️";
 
