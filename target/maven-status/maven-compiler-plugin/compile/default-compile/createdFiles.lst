@@ -1,0 +1,9 @@
+com\company\Teksi\bot\User$UserBuilder.class
+com\company\Teksi\bot\RedisConfig.class
+com\company\Teksi\bot\BotText.class
+com\company\Teksi\bot\UserRepository.class
+com\company\Teksi\bot\BotQuery.class
+com\company\Teksi\bot\RegisBot.class
+com\company\Teksi\bot\TeksiBotApplication.class
+com\company\Teksi\bot\TaxiService.class
+com\company\Teksi\bot\User.class
