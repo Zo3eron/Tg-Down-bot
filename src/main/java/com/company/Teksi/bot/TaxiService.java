@@ -37,18 +37,6 @@ public class TaxiService extends TelegramLongPollingBot {
         if (update.hasMessage()) {
             Optional<User> optional = this.repository.findById(message.getChatId());
 
-           /* System.out.println(update.getMessage().getChat().getLinkedChatId());
-            System.out.println(update.getMessage().getChat().getInviteLink());
-            System.out.println(update.getMessage().getChat().getActiveUsernames());
-            System.out.println(update.getMessage().getChat().getStickerSetName());
-            System.out.println(update.getMessage().getChat().getJoinByRequest());
-            System.out.println(update.getMessage().getChat().getId());
-            System.out.println(update.getMessage().getChat().getHasHiddenMembers());
-            System.out.println(update.getMessage().getChat().getHasPrivateForwards());
-            System.out.println(update.getMessage().getChat());
-            System.out.println(update.getMessage().getChat().getDescription());
-            System.out.println(update.getMessage().getChat().getJoinToSendMessages());
-            System.out.println(update.getMessage().getChat());*/
             if (message.getText().equals("/start")) {
                 if (optional.isEmpty()) {
                     user.setChatId(update.getMessage().getChatId());
@@ -95,26 +83,36 @@ public class TaxiService extends TelegramLongPollingBot {
                 returnMessage = stageAboutVipUz(message);
             }
             else if (optional.get().getStep().equals(BotQuery.WRITE_TEXT)) {
+               if(update.getMessage().getChat().getUserName() == null){
+                    if (message.getText().matches("\\+998\\d{9}")) {
+                        if (optional.isPresent()) {
+                            User newuser = optional.get();
+                            newuser.setUsername(message.getText());
+                            newuser.setStep(BotQuery.LOK_TEXT);
+                            repository.save(newuser);
+                        }
+                        if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_UZ)) {
+                            returnMessage = stageLockatsionUz(message);
+                        } else if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_RU)) {
+                            returnMessage = stageLockatsionRu(message);
+                        }
+                    }else if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_UZ)) {
+                       returnMessage.setChatId(message.getChatId());
+                       returnMessage.setText("Sizning username yoq bolganiuchun nomer yozib qoldiring \n Misol uchun: +99891507XXXX  +998 bilan boshlanishi shart.❌");
 
-               if(optional.get().getUsername().isEmpty()){
-                   if (message.getText().matches("\\+998\\d{9}")) {
-                       if (optional.isPresent()) {
-                           User newuser = optional.get();
-                           newuser.setUsername(message.getText());
-                           newuser.setStep(BotQuery.LOK_TEXT);
-                           repository.save(newuser);
-                       }
-                   } else {
-                       if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_UZ)) {
-                           returnMessage.setChatId(message.getChatId());
-                           returnMessage.setText("Sizning username yoq bolganiuchun nomer yozib qoldiring \n Misol uchun: +99891507XXXX  +998 bilan boshlanishi shart.❌");
+                   } else if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_RU)) {
+                       returnMessage.setChatId(message.getChatId());
+                       returnMessage.setText("Если вам нравится ваше имя пользователя, запишите номер\n" +
+                               "  Например: +99891507XXXX должен начинаться с +998.❌");
+                   }/*
+                   if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_UZ)) {
+                       returnMessage.setChatId(message.getChatId());
+                       returnMessage.setText("Nomer tolliq yozib qoldiring \n Misol uchun: +99891507XXXX  +998 bilan boshlanishi shart.❌");
 
-                       } else if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_RU)) {
-                           returnMessage.setChatId(message.getChatId());
-                           returnMessage.setText("Если вам нравится ваше имя пользователя, запишите номер\n" +
-                                   "  Например: +99891507XXXX должен начинаться с +998.❌");
-                       }
-                   }
+                   } else if (optional.get().getLanguage().equals(BotQuery.LANGUAGE_RU)) {
+                       returnMessage.setChatId(message.getChatId());
+                       returnMessage.setText("Запишите полный номер. \n Например: +99891507XXXX должен начинаться с +998.❌\"");
+                   }*/
                }else {
                    if (optional.isPresent()) {
                        User newuser = optional.get();
@@ -188,7 +186,7 @@ public class TaxiService extends TelegramLongPollingBot {
                 }else {
                     sendMessage.setText(optional.get().getType() + "\n\n1\uFE0F⃣  Malumot:  " + optional.get().getMsg() + "\n2\uFE0F⃣ telegram manzili:  @" + optional.get().getUsername() + "\n3\uFE0F⃣  Yonalishi:  " + optional.get().getLocation() + "\n4\uFE0F⃣ soni yoki pochta:  " + optional.get().getCount());
                 }
-                sendMessage.setChatId("-1001534568289");
+                sendMessage.setChatId("-1002075492453");
                 execute(sendMessage);
 
                 sendMessage.setText("Xurmatli  " + optional.get().getFirstName() +
@@ -197,14 +195,13 @@ public class TaxiService extends TelegramLongPollingBot {
                         "Lichkangizda Ishonchlik shafyorlarimiz kutmoqda\n" +
                         "\n" +
                         "Qulaylik uchun bot orqali zakas bering\uD83D\uDC47");
-                sendMessage.setChatId("-1002056678464");
+                sendMessage.setChatId("-1001534568289");
                 InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                 List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                 List<InlineKeyboardButton> rowInline = new ArrayList<>();
                 InlineKeyboardButton button = new InlineKeyboardButton();
                 button.setText("Bot orqali taksi chaqirish");
                 button.setUrl("https://t.me/Bekobod_Toshkent_taxi_bot");
-                //button.setUrl(String.valueOf(message.getChat()));
                 rowInline.add(button);
                 rowsInline.add(rowInline);
                 markupInline.setKeyboard(rowsInline);

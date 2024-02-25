@@ -30,7 +30,7 @@ String VIPABOUT_RU="✅Вип группа - бу что означает и к�
 
 String CLENT_LOK_UZ="Qaysi yonalish boyicha taksi kerakligini tanlang⬇️⬇️⬇️⬇️  \n Yokida tolliq  yozib qoldiring";
 String CLENT_LOK_RU="Выберите, в каком направлении такси⬇️⬇️⬇️⬇️ \n Или напишите полностью";
-String ORDER_UZ="Nechta yolovchi bor yoki pochtami⬇️⬇️⬇️⬇️";
-String ORDER_RU="Сколько пассажиров есть или почтовые⬇️⬇️⬇️⬇️";
+String ORDER_UZ="Nechta yolovchi bor yoki pochtami⬇️⬇️⬇️⬇️ \n Holasangiz ozingiz yozib qoldiring";
+String ORDER_RU="Сколько пассажиров есть или почтовые⬇️⬇️⬇️⬇️\n Если хочешь, напиши сам";
 
 }
