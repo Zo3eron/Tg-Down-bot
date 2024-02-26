@@ -13,7 +13,7 @@ services:
     depends_on:
       - postgres
   postgres:
-    container_name: postgres-db
+    container_name: postgress-db
     image: "postgres:15"
     restart: always
     ports:

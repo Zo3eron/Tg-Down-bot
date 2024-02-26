@@ -14,6 +14,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class TaxiService extends TelegramLongPollingBot {
 
     private final UserRepository repository;
 
+
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
@@ -32,11 +34,11 @@ public class TaxiService extends TelegramLongPollingBot {
         Message message = update.getMessage();
         User user = new User();
 
-
+        if(update.getMessage().getChatId().equals("")) {
+        }
 
         if (update.hasMessage()) {
             Optional<User> optional = this.repository.findById(message.getChatId());
-
             if (message.getText().equals("/start")) {
                 if (optional.isEmpty()) {
                     user.setChatId(update.getMessage().getChatId());
@@ -195,7 +197,7 @@ public class TaxiService extends TelegramLongPollingBot {
                         "Lichkangizda Ishonchlik shafyorlarimiz kutmoqda\n" +
                         "\n" +
                         "Qulaylik uchun bot orqali zakas bering\uD83D\uDC47");
-                sendMessage.setChatId("-1001534568289");
+                sendMessage.setChatId("-1001550622623");
                 InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                 List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                 List<InlineKeyboardButton> rowInline = new ArrayList<>();
@@ -243,11 +245,11 @@ public class TaxiService extends TelegramLongPollingBot {
             }
             execute(deleteMessage);
         }
-
-
         execute(returnMessage);
 
     }
+
+
 
     private SendMessage stageEndUZ(Message message) {
         SendMessage sendMessage = new SendMessage();
