@@ -34,9 +34,6 @@ public class TaxiService extends TelegramLongPollingBot {
         Message message = update.getMessage();
         User user = new User();
 
-        if(update.getMessage().getChatId().equals("")) {
-        }
-
         if (update.hasMessage()) {
             Optional<User> optional = this.repository.findById(message.getChatId());
             if (message.getText().equals("/start")) {
